@@ -60,14 +60,45 @@ Sabit kapanış: **KÖFTECİ DAYI – Gaziemir** · 📍[ADRES] · ⏰[SAATLER] 
 - Sadece gerçekte olanı göster; kullanılan et/malzeme hakkında doğru olmayan iddia yazma.
 
 ### 7. Gaziemir şubesinin ekibini tanı
-- Usta, garson, kasadaki arkadaş — her biri 2–3 sn: *"Ben [İSİM], ızgaradayım."* / *"Ben [İSİM], seni kapıda ben karşılıyorum."*
-- Mümkünse şube sahibi: *"Ben [İSİM], Gaziemirliyim. Bu şubeyi kendi semtime açtım."* (Gaziemirliyse bu cümle çok güçlüdür.)
-- İnsanlar dükkâna değil, **insana** gelir. Franchise olsa da şubeyi mahalleli yapan bu yüzlerdir.
+Şube sahibi Gaziemirli değil. Bunu saklamaya gerek yok, tam tersine **"Gaziemir'i seçtik, buraya geldik"** mesajına çevir. "Yerliyiz" demek yerine **"artık komşuyuz"** de.
 
-### 7b. "Aynı tarif, artık Gaziemir'de" (franchise avantajı)
-- *"Köfteci Dayı'yı [başka şube/ilçe]'den biliyorsan, aynı lezzet artık Gaziemir'de."*
-- Standart tarif, aynı porsiyon, aynı kalite vurgusu: bilinmeyen esnaf riskini ortadan kaldırır.
-- Merkez hesabından **ortak gönderi (collab)** ile paylaşılırsa markayı tanıyan takipçilere direkt ulaşır.
+**Konuşma metni (20–25 sn):**
+| Sn | Görüntü | Konuşma / ekran yazısı |
+|---|---|---|
+| 0–3 | Şube sahibi dükkân kapısında, tabela arkada | 🗣️ *"Merhaba Gaziemir. Ben [İSİM], Köfteci Dayı Gaziemir şubesinin sahibiyim."* |
+| 3–8 | İçeri yürür, ekip ızgara ve kasada | 🗣️ *"Gaziemirli değilim, saklamayacağım. Ama Bornova'da, Buca'da, Alsancak'ta sevilen bu köfteyi buraya getirmek istedim. Gaziemir'i seçtim."* |
+| 8–14 | Ekip tek tek el sallar | 🗣️ *"Ekibimle tanışın:"* → Usta: *"Ben [İSİM], ızgaradayım."* · Garson: *"Ben [İSİM], sizi ben karşılıyorum."* · Kasa: *"Ben [İSİM], hesap bende 😄"* |
+| 14–20 | Sahibi masaya tabak koyar | 🗣️ *"Burada yeniyiz, biliyorum. O yüzden sizi yıllardır tanıyormuş gibi ağırlayacağız. Gelin, bir çayımızı için."* |
+| 20–23 | Kapanış kartı | 📝 **KÖFTECİ DAYI – Gaziemir · Artık komşuyuz.** 📍[ADRES] |
+
+- **Caption:** `Gaziemirli değiliz ama artık Gaziemir'deyiz. Komşuluğumuz hayırlı olsun 🤝 📍[ADRES]`
+- Ekipte Gaziemirli/çevre semtlerden çalışan varsa mutlaka belirt: *"Ben [İSİM], Sarnıç'tanım."* Bu, yerel bağı ekip üzerinden kurar.
+
+### 7b. "Bornova'da, Buca'da, Alsancak'ta biliyorsun. Artık Gaziemir'de." (franchise avantajı)
+"Bilmediğim yere gitmem" diyen Gaziemirliye en güçlü cevap: **Bu bilinmeyen bir yer değil.** Gaziemirlilerin çoğu Bornova'da okumuş, Buca'da oturmuş, Alsancak'ta gezmiştir.
+
+**Konuşma metni (15–18 sn):**
+| Sn | Görüntü | Konuşma / ekran yazısı |
+|---|---|---|
+| 0–2 | Haritada İzmir, Bornova'da bir pin | 📝 *"BORNOVA ✅"* |
+| 2–4 | Buca'da pin | 📝 *"BUCA ✅"* |
+| 4–6 | Alsancak'ta pin | 📝 *"ALSANCAK ✅"* |
+| 6–8 | Gaziemir'de büyük, parlayan pin | 📝 *"VE ARTIK… GAZİEMİR 📍"* |
+| 8–14 | Izgarada köfte, tabak servisi | 🗣️ (seslendirme) *"Bornova'da yediysen, Buca'da yediysen, Alsancak'ta yediysen bilirsin. Aynı tarif, aynı lezzet. Artık Bornova'ya kadar gitmene gerek yok."* |
+| 14–17 | Kapanış kartı | 📝 **KÖFTECİ DAYI – 4. adres: Gaziemir** 📍[ADRES] |
+
+- **Caption:** `Bornova, Buca, Alsancak derken sıra Gaziemir'e geldi 📍 Diğer şubelerden bilenler, yorumlara hangi şubede yediğinizi yazın 👇`
+- **Merkez hesabıyla collab** olarak paylaş: Bornova/Buca/Alsancak takipçilerinden Gaziemir'de oturan/çalışanlara direkt ulaşır.
+- Yorumlarda "Buca'da yemiştim, çok iyiydi" diyenler = ücretsiz referans. Bunları story'de paylaş.
+
+### 7c. "Hangi şubede yemiştin?" (sokak röportajı)
+- Gaziemir'de sokakta: *"Köfteci Dayı'yı duydun mu?"* → *"Evet, Bornova'da / Alsancak'ta yemiştim."* → *"Artık Gaziemir'de, şurada!"* (kamera dükkânı gösterir).
+- Duymamış olanlara kör tadım yaptır (Video 2 ile birleştir).
+- **Yazı:** *"Gaziemir'in yarısı bizi zaten tanıyormuş 😄"*
+
+### 7d. Öğrenciler ve iş için şehre gidenler
+- *"Ege Üniversitesi'nde okurken Bornova'da yerdin. Dokuz Eylül'de okurken Buca'da yerdin. Mezun oldun, Gaziemir'e döndün. Köfte de seninle geldi."*
+- Nostalji duygusu: Gaziemirli 25–40 yaş grubuna çok iyi gider.
 
 ### 8. Usta ızgara başında – sıcak sahne
 - Yakın çekim: köfteler ızgarada cızırdıyor, alev, közlenmiş biber, domates. Ses açık.
@@ -134,6 +165,8 @@ Sabit kapanış: **KÖFTECİ DAYI – Gaziemir** · 📍[ADRES] · ⏰[SAATLER] 
 - "Beğenmezsen ödeme. Bu kadar eminim."
 - "Gaziemir'de 20 yıldır yaşayanlara köftemizi tattırdık."
 - "Sesi aç. 🔊"
+- "Bornova'da yediysen bilirsin…"
+- "Gaziemirli değiliz ama artık komşuyuz."
 - "Her grupta bir 'olmaz biz hep oraya gideriz' arkadaşı vardır."
 - "Öğle arası 1 saat mi? 10 dakikada masadasın."
 - "Bu tabak kaç lira? Tahmin et."
@@ -147,7 +180,7 @@ Sabit kapanış: **KÖFTECİ DAYI – Gaziemir** · 📍[ADRES] · ⏰[SAATLER] 
 5. `Kaydet, acıkınca lazım olacak 📌`
 
 ## Hashtag seti
-#köftecidayı #köftecidayıgaziemir #gaziemir #gaziemirköfte #gaziemiryemek #izmir #izmirköfte #izmiryemek #izmirdeneyenir #izmirlezzetleri #köfte #ızgaraköfte #öğleyemeği #esnaflokantası
+#köftecidayı #köftecidayıgaziemir #köftecidayıbornova #köftecidayıbuca #köftecidayıalsancak #gaziemir #gaziemirköfte #gaziemiryemek #izmir #izmirköfte #izmiryemek #izmirdeneyenir #izmirlezzetleri #köfte #ızgaraköfte #öğleyemeği #esnaflokantası
 
 ## Bunları videodan önce yap
 - **Merkezle konuş:** Logo, renk, müzik ve kampanya kuralları (indirim, "beğenmezsen ödeme", çekiliş) franchise sözleşmesine uygun mu? Merkezin hazır görselleri/videoları varsa iste. Gaziemir videolarını merkez hesabıyla collab olarak paylaşmayı teklif et.
@@ -163,13 +196,13 @@ Sabit kapanış: **KÖFTECİ DAYI – Gaziemir** · 📍[ADRES] · ⏰[SAATLER] 
 **1. hafta – Tanış (bilinmezliği kaldır)**
 | Gün | Video |
 |---|---|
-| 1 | Gaziemir şubesinin ekibini tanı (7) + Aynı tarif artık Gaziemir'de (7b) |
-| 2 | Usta ızgara başında – sesi aç (8) |
+| 1 | Bornova, Buca, Alsancak… artık Gaziemir (7b) ⭐ merkezle collab |
+| 2 | Gaziemir şubesinin ekibini tanı – "Artık komşuyuz" (7) |
 | 3 | Gaziemir, sana bir teklifim var (1) ⭐ reklam ver |
 | 4 | Tabakta ne var + fiyat (10) |
 | 5 | Köfte nasıl yapılıyor (6) |
 | 6 | Temizlik turu (9) |
-| 7 | Gaziemir'de bir gün (13) |
+| 7 | Hangi şubede yemiştin? sokak röportajı (7c) |
 
 **2. hafta – Kanıtla (komşu kanıtı)**
 | Gün | Video |
@@ -189,7 +222,7 @@ Sabit kapanış: **KÖFTECİ DAYI – Gaziemir** · 📍[ADRES] · ⏰[SAATLER] 
 | 16 | Kör tadım – Emrez (2) |
 | 17 | Damga kartı (17) |
 | 18 | İlk kez gelen müşteri (4) |
-| 19 | Havalimanı köftesi (12) |
+| 19 | Öğrenciyken Bornova'da yerdin (7d) |
 | 20 | Çekiliş: 1 ay bedava öğle yemeği (19) |
 | 21 | Maç akşamı (15) |
 
