@@ -5,7 +5,7 @@ Gaziemir'de insanlar yıllardır bildiği esnafta yiyor. Bu tembellik değil, **
 
 | Engel | Videoda nasıl kırarız? |
 |---|---|
-| "Bilmediğim yere gitmem" | **Tanıdıklık:** Dayı'nın yüzü, ustanın adı, mutfak. Bilinmeyen dükkân değil, tanıdık bir insan. |
+| "Bilmediğim yere gitmem" | **Tanıdıklık:** Şubenin ustası ve ekibi kamerada, mutfak açık. Bilinmeyen bir dükkân değil, yüzünü tanıdığın bir ekip + bilinen bir marka. |
 | "Ya beğenmezsem?" | **Risksiz deneme:** "Beğenmezsen ödeme" / ilk deneme indirimi. |
 | "Kimse gitmiyor ki" | **Komşu kanıtı:** Gaziemirliler kamerada "valla iyiymiş" diyor. |
 | "Benim köftecim var zaten" | **Rakibi kötülemeden merak uyandırmak:** "Bir kere de buraya gel, karşılaştır." |
@@ -13,6 +13,8 @@ Gaziemir'de insanlar yıllardır bildiği esnafta yiyor. Bu tembellik değil, **
 > **Altın kural:** Asla rakip esnafı kötüleme. Gaziemir küçük bir semt, insanlar o esnafı seviyor. Mesaj "onları bırak" değil, **"bir kere de bizi dene"** olmalı.
 
 Ton: Samimi, mahalle ağzı, Ege sıcaklığı. "Komşu", "hemşerim", "gel bir otur" dili. Reklam değil, mahalle sohbeti gibi.
+> **Not:** Köfteci Dayı bir franchise; "Dayı" diye bir kişi yok, marka adı. Videolarda yüz olarak **Gaziemir şubesinin kendi ustası ve çalışanları** kullanılır. Franchise'ın gücü de ayrıca kullanılır: *"Bilinen marka, aynı tarif, artık Gaziemir'de."*
+
 Sabit kapanış: **KÖFTECİ DAYI – Gaziemir** · 📍[ADRES] · ⏰[SAATLER] · 📞[TELEFON]
 
 ---
@@ -20,11 +22,11 @@ Sabit kapanış: **KÖFTECİ DAYI – Gaziemir** · 📍[ADRES] · ⏰[SAATLER] 
 ## A) ALIŞKANLIK KIRAN ANA VİDEOLAR
 
 ### 1. "Gaziemir, sana bir teklifim var" (kampanyanın açılış videosu)
-- **0–2 sn:** Dayı/usta kameraya dönük, önlük önünde, ızgaranın başında. Yazı: *"GAZİEMİR, SANA BİR TEKLİFİM VAR"*
+- **0–2 sn:** Şubenin ustası kameraya dönük, önlük önünde, ızgaranın başında. Yazı: *"GAZİEMİR, SANA BİR TEKLİFİM VAR"*
 - **2–12 sn:** *"Biliyorum, herkesin bir köftecisi var. Yıllardır gittiğin yer. Ona lafım yok. Ama bir kere, sadece bir kere bize gel. Beğenmezsen hesabı ödeme."*
 - **12–15 sn:** Köfte ızgaradan tabağa. *"Şart yok, gel bir dene."*
 - **Açıklama:** `Beğenmezsen ödemiyorsun. Bu kadar emin. 📍Gaziemir [ADRES]`
-- ⚠️ Sadece işletme bu sözü gerçekten tutabilecekse çekin. Alternatif: *"İlk gelişine ayran/tatlı bizden."*
+- ⚠️ Franchise olduğu için bu kampanyayı önce **merkezin onayına** sunun; şube bu sözü tutabilecekse çekin. Alternatif: *"İlk gelişine ayran/tatlı bizden."*
 
 ### 2. Kör tadım: "Gaziemirliler köftemizi tadıyor"
 - Sokakta veya dükkân önünde, isimsiz bir tabakta köfte uzatılır: *"Tadına bakar mısın, puan ver."*
@@ -57,9 +59,15 @@ Sabit kapanış: **KÖFTECİ DAYI – Gaziemir** · 📍[ADRES] · ⏰[SAATLER] 
 - **Yazı:** *"Sabah [saat]. Gaziemir uyurken köfteler hazırlanıyor."*
 - Sadece gerçekte olanı göster; kullanılan et/malzeme hakkında doğru olmayan iddia yazma.
 
-### 7. Dayı'yı tanı
-- *"Ben [İSİM], [X] yıldır bu işi yapıyorum."* Kısa hikâye: nereden geldi, köfteyi kimden öğrendi.
-- İnsanlar dükkâna değil, **insana** gelir. Bu video tüm kampanyanın temeli.
+### 7. Gaziemir şubesinin ekibini tanı
+- Usta, garson, kasadaki arkadaş — her biri 2–3 sn: *"Ben [İSİM], ızgaradayım."* / *"Ben [İSİM], seni kapıda ben karşılıyorum."*
+- Mümkünse şube sahibi: *"Ben [İSİM], Gaziemirliyim. Bu şubeyi kendi semtime açtım."* (Gaziemirliyse bu cümle çok güçlüdür.)
+- İnsanlar dükkâna değil, **insana** gelir. Franchise olsa da şubeyi mahalleli yapan bu yüzlerdir.
+
+### 7b. "Aynı tarif, artık Gaziemir'de" (franchise avantajı)
+- *"Köfteci Dayı'yı [başka şube/ilçe]'den biliyorsan, aynı lezzet artık Gaziemir'de."*
+- Standart tarif, aynı porsiyon, aynı kalite vurgusu: bilinmeyen esnaf riskini ortadan kaldırır.
+- Merkez hesabından **ortak gönderi (collab)** ile paylaşılırsa markayı tanıyan takipçilere direkt ulaşır.
 
 ### 8. Usta ızgara başında – sıcak sahne
 - Yakın çekim: köfteler ızgarada cızırdıyor, alev, közlenmiş biber, domates. Ses açık.
@@ -142,6 +150,7 @@ Sabit kapanış: **KÖFTECİ DAYI – Gaziemir** · 📍[ADRES] · ⏰[SAATLER] 
 #köftecidayı #köftecidayıgaziemir #gaziemir #gaziemirköfte #gaziemiryemek #izmir #izmirköfte #izmiryemek #izmirdeneyenir #izmirlezzetleri #köfte #ızgaraköfte #öğleyemeği #esnaflokantası
 
 ## Bunları videodan önce yap
+- **Merkezle konuş:** Logo, renk, müzik ve kampanya kuralları (indirim, "beğenmezsen ödeme", çekiliş) franchise sözleşmesine uygun mu? Merkezin hazır görselleri/videoları varsa iste. Gaziemir videolarını merkez hesabıyla collab olarak paylaşmayı teklif et.
 - **Google İşletme Profili:** Doğru adres, saatler, güncel menü fotoğrafları. İnsanlar videoyu izler → Google'a "köfteci dayı gaziemir" yazar. Orada bulamazsa gelmez.
 - **Instagram konum etiketi:** Her videoya "Gaziemir, İzmir" konumu ekle.
 - **Instagram'da konum bazlı reklam:** Gaziemir + 3 km çevresi, 18–55 yaş, günlük küçük bütçe. 1 ve 2 numaralı videolar reklam için en uygunları.
@@ -154,7 +163,7 @@ Sabit kapanış: **KÖFTECİ DAYI – Gaziemir** · 📍[ADRES] · ⏰[SAATLER] 
 **1. hafta – Tanış (bilinmezliği kaldır)**
 | Gün | Video |
 |---|---|
-| 1 | Dayı'yı tanı (7) |
+| 1 | Gaziemir şubesinin ekibini tanı (7) + Aynı tarif artık Gaziemir'de (7b) |
 | 2 | Usta ızgara başında – sesi aç (8) |
 | 3 | Gaziemir, sana bir teklifim var (1) ⭐ reklam ver |
 | 4 | Tabakta ne var + fiyat (10) |
