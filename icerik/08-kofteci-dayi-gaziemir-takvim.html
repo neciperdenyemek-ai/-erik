@@ -1,0 +1,187 @@
+<title>Köfteci Dayı Gaziemir Takvimi</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: üstte başlık + başlangıç tarihi, altında 4 haftalık aşama; her gün bir satır kartı (gün/tarih | video | saat + etiketler) */
+:root{
+  --bg:#f7f6f3; --surface:#ffffff; --fg:#1d211f; --muted:#5f6662; --line:#e2e1db;
+  --accent:#1f6b4a; --accent-soft:#e3efe8; --amber:#a35d00; --amber-soft:#fbeedb;
+  --blue:#2b5c8a; --blue-soft:#e3ecf5; --done:#9aa19d;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141715; --surface:#1c201e; --fg:#e8ebe9; --muted:#9ca39f; --line:#2c312e;
+  --accent:#5fbf8f; --accent-soft:#1f3329; --amber:#f0a94a; --amber-soft:#3a2a14;
+  --blue:#7fb0e0; --blue-soft:#1d2a38; --done:#5d6460; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141715; --surface:#1c201e; --fg:#e8ebe9; --muted:#9ca39f; --line:#2c312e;
+  --accent:#5fbf8f; --accent-soft:#1f3329; --amber:#f0a94a; --amber-soft:#3a2a14;
+  --blue:#7fb0e0; --blue-soft:#1d2a38; --done:#5d6460; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:920px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:28px}
+header{display:flex;flex-direction:column;gap:10px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,6vw,44px);line-height:1.05;margin:0;text-wrap:balance}
+.lead{margin:0;color:var(--muted);max-width:62ch}
+.controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.controls label{font-weight:600;font-size:14px}
+.controls input[type=date]{font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg)}
+.progress{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.legend{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--muted);align-items:center}
+.rhythm{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.rhythm div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-width:0}
+.rhythm b{display:block;font-family:var(--display);font-size:15px;margin-bottom:2px}
+.rhythm span{font-size:13.5px;color:var(--muted)}
+section.phase{display:flex;flex-direction:column;gap:10px}
+.phase-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--fg);padding-bottom:6px}
+.phase-head h2{font-family:var(--display);font-weight:700;font-size:22px;margin:0}
+.phase-head p{margin:0;color:var(--muted);font-size:14px}
+.day{display:grid;grid-template-columns:72px 1fr auto;gap:14px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.day.done{opacity:.55}
+.day.done .title{text-decoration:line-through;text-decoration-color:var(--done)}
+.num{font-family:var(--display);font-weight:800;font-size:28px;line-height:1;font-variant-numeric:tabular-nums}
+.date{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.3}
+.main{min-width:0;display:flex;flex-direction:column;gap:4px}
+.title{font-weight:600;font-size:16px;margin:0}
+.hook{font-size:14px;margin:0}
+.hook::before{content:"Ekran yazısı: ";color:var(--muted)}
+.shoot{font-size:13.5px;color:var(--muted);margin:0}
+.side{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
+.time{font-weight:600;font-variant-numeric:tabular-nums;font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end}
+.chip{font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.chip.ad{background:var(--amber-soft);color:var(--amber)}
+.chip.camp{background:var(--blue-soft);color:var(--blue)}
+.check{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--muted);cursor:pointer}
+.check input{width:16px;height:16px;accent-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.foot{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.foot h3{font-family:var(--display);margin:0 0 6px;font-size:17px}
+.foot ul{margin:0;padding-left:18px;color:var(--muted)}
+@media (max-width:560px){
+  .day{grid-template-columns:52px 1fr;}
+  .side{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;text-align:left}
+  .chips{justify-content:flex-start}
+  .num{font-size:24px}
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Köfteci Dayı · Gaziemir şubesi</div>
+    <h1>30 günlük video takvimi</h1>
+    <p class="lead">Hedef: "biz hep aynı yere gideriz" diyen Gaziemirliyi bir kere denemeye getirmek, sonra tekrar getirmek. Her gün 1 Reels, aynı videonun kısa hali Story ve TikTok'a da gider. Video numaraları içerik dosyasındaki senaryolara karşılık gelir.</p>
+  </header>
+
+  <div class="controls">
+    <label for="start">Başlangıç tarihi</label>
+    <input type="date" id="start">
+    <span class="progress" id="progress">0 / 30 paylaşıldı</span>
+  </div>
+
+  <div class="rhythm">
+    <div><b>Öğle öncesi 11:00–11:30</b><span>Izgara, tabak ve fiyat videoları. İnsanlar öğle yemeğini düşünürken görsün.</span></div>
+    <div><b>Akşam 20:00–21:00</b><span>Ekip, müşteri ve skeç videoları. En çok izlenme saati.</span></div>
+    <div><b>Haftada 1 toplu çekim</b><span>Pazartesi sabahı 2–3 saat: haftanın 7 videosunu tek seferde çek.</span></div>
+  </div>
+
+  <div class="legend">
+    <span class="chip ad">Reklam ver</span> Gaziemir + 3 km, küçük günlük bütçe
+    <span class="chip camp">Kampanya</span> merkez onayı gerekir
+    <span class="chip">Collab</span> merkez hesabıyla ortak gönderi
+  </div>
+
+  <div id="phases"></div>
+
+  <div class="foot">
+    <h3>Her hafta sonunda kontrol et</h3>
+    <ul>
+      <li>Kasada "Bizi nereden duydunuz?" çetelesi: Instagram / komşu / yoldan geçerken.</li>
+      <li>İlk kez gelen müşteri sayısı haftadan haftaya artıyor mu?</li>
+      <li>En çok kaydedilen ve paylaşılan 2 videoyu bul, aynı formatı sonraki ay çoğalt.</li>
+      <li>Damga kartında 2. ve 3. damgayı alanlar: alışkanlığı kırılan müşteriler.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+const PHASES=[
+ {name:"1. hafta · Tanış",note:"Bilinmezliği kaldır: marka, ekip, mutfak, fiyat."},
+ {name:"2. hafta · Kanıtla",note:"Gaziemirli komşular kamerada konuşsun."},
+ {name:"3. hafta · Davet et",note:"Denemeyi kolaylaştıran kampanyalar."},
+ {name:"4. hafta · Alışkanlığa çevir",note:"Tekrar gelmeleri için sebep ver."}
+];
+const DAYS=[
+ [1,"Bornova, Buca, Alsancak… artık Gaziemir (7b)","BORNOVA ✅ BUCA ✅ ALSANCAK ✅ VE ARTIK GAZİEMİR 📍","İzmir haritasında şubeler tek tek işaretlenir, sonra ızgara ve tabak servisi.","11:30",["collab","ad"]],
+ [1,"Ekibimizle tanışın: \"Artık komşuyuz\" (7)","Gaziemirli değiliz ama artık komşuyuz.","Şube sahibi kapıda konuşur, usta, garson ve kasa birer cümleyle kendini tanıtır.","20:30",[]],
+ [1,"Gaziemir, sana bir teklifim var (1)","GAZİEMİR, SANA BİR TEKLİFİM VAR","Usta ızgara başında kameraya konuşur: \"Bir kere gel, beğenmezsen ödeme.\"","11:30",["ad","camp"]],
+ [1,"Tabakta ne var, kaç lira? (10)","Bu tabak kaç lira? Tahmin et.","Porsiyon üstten çekilir, her ürünün üstüne isim, sonda fiyat.","11:00",[]],
+ [1,"Köfteler nasıl hazırlanıyor (6)","Sabah 7. Gaziemir uyurken köfteler hazırlanıyor.","Sabah hazırlığı: yoğurma, şekil verme, dizme. Sözsüz, sadece ses.","19:00",[]],
+ [1,"Mutfak ve temizlik turu (9)","Mutfağımıza gel, gizlimiz saklımız yok.","Tezgâh, ızgara, dolap, bone ve eldivenli ekip. Tek plan, yürüyerek.","20:30",[]],
+ [1,"Hangi şubede yemiştin? (7c)","Köfteci Dayı'yı duydun mu?","Gaziemir sokaklarında röportaj. Duymayanlara tadım yaptırılır.","13:00",[]],
+
+ [2,"Kör tadım: Sarnıç (2)","Sarnıç'a köftemizi tattırdık.","Etiketsiz tabakla sokakta tadım, gerçek puanlar ekrana yazılır.","11:30",["ad"]],
+ [2,"İlk kez gelen müşteri (4)","İlk kez geldi, ikinci porsiyonu istedi.","Kasada \"İlk kez mi?\" sorusu, yemek sonrası kısa yorum. İzin alarak.","20:30",[]],
+ [2,"Serbest Bölge öğle arası (11)","Öğle arası 1 saat mi? 10 dakikada masadasın.","Siparişten masaya kronometreli servis. İş kıyafetli müşteriler, izinli.","11:00",[]],
+ [2,"Komşum söyledi, geldim (5)","Gaziemir'de bizi reklam değil, komşular anlatıyor.","Müşterilere \"Bizi nereden duydunuz?\" sorusu, kısa cevaplar art arda.","20:30",[]],
+ [2,"Kör tadım: Aktepe (2)","Aktepe'ye köftemizi tattırdık.","Sarnıç videosunun aynısı, farklı mahalle.","11:30",[]],
+ [2,"Izgara başında, sesi aç (8)","Sesi aç 🔊","Yakın çekim: cızırdayan köfte, alev, közlenmiş biber. Ses açık.","11:00",[]],
+ [2,"\"Biz hep oraya gideriz\" skeci (3)","Her grupta bir \"olmaz biz hep oraya gideriz\" arkadaşı vardır.","Arkadaş grubu skeci: en çok itiraz eden ikinci porsiyonu ister.","20:30",[]],
+
+ [3,"Getir arkadaşını (16)","Hep gittiğin yerden bir arkadaşını getir.","İki arkadaş masada, kampanya ekranda yazılı. Etiketleme çağrısı.","11:30",["camp"]],
+ [3,"Kör tadım: Emrez (2)","Emrez'e köftemizi tattırdık.","Kör tadım serisi, üçüncü mahalle.","11:30",[]],
+ [3,"Damga kartı (17)","5 kere gel, 6. porsiyon bizden.","Karta damga basılırken yakın çekim, kartın tamamı gösterilir.","20:30",["camp"]],
+ [3,"İlk kez gelen müşteri (4)","İlk kez geldi, ne dedi?","Yeni müşterilerle kısa röportaj, 2–3 kişi art arda.","20:30",[]],
+ [3,"Öğrenciyken Bornova'da yerdin (7d)","Ege'de okurken Bornova'da yerdin…","Eski fotoğraf havası, sonra Gaziemir şubesinde aynı tabak.","20:30",[]],
+ [3,"Çekiliş: 1 ay bedava öğle yemeği (19)","1 ay öğle yemeği bizden.","Kampanya kurallarını anlatan kısa video, Gaziemirli 2 arkadaşı etiketle.","19:00",["camp","ad"]],
+ [3,"Maç akşamı (15)","Maç bizde, köfte bizde.","Maç günü ekranlı salon ve dolu masalar. Maç olan güne kaydır.","Maçtan 2 sa önce",[]],
+
+ [4,"Yorum yaz, tatlı kap (18)","Google'a yorum yaz, tatlın bizden.","Müşteri telefondan yorumu gösterir, tatlı masaya gelir.","20:30",["camp"]],
+ [4,"Kör tadım: Gazikent (2)","Gazikent'e köftemizi tattırdık.","Kör tadım serisi, dördüncü mahalle.","11:30",[]],
+ [4,"Muhtar / tanınmış esnaf ziyareti (14)","Mahallemizin sevilen ismi bize konuk oldu.","İzinle davet edilen mahalle siması yemekte, kısa sohbet.","20:30",[]],
+ [4,"Sen seç: yeni menü anketi (20)","Kaşarlı mı acılı mı? Sen seç.","İki ürün yan yana. Story'de anket sticker'ı ile birlikte paylaş.","19:00",[]],
+ [4,"İlk kez gelen müşteri (4)","Bir kere geldi, gerisi geldi.","Damga kartında 2. damgasını alan bir müşteri varsa onu çek.","20:30",[]],
+ [4,"Çekiliş sonucu","Kazanan belli oldu!","Kazanan şubede ilk öğle yemeğini yerken (izinli).","20:00",[]],
+ [4,"Kör tadım: Atatürk Mah. (2)","Atatürk Mahallesi'ne köftemizi tattırdık.","Kör tadım serisi, beşinci mahalle.","11:30",[]],
+ [4,"Skeç 2. bölüm (3)","Geçen hafta itiraz eden arkadaş geri döndü.","Aynı grup, bu sefer \"olmaz\" diyen arkadaş herkesi kendisi getirir.","20:30",[]],
+ [4,"1 ayın teşekkür videosu","Bu ay kaç Gaziemirli ilk kez geldi?","Ayın sayısı (ilk kez gelenler), müşteri anları kurgusu, ekip el sallar.","20:30",["collab"]]
+];
+const CHIP={ad:["ad","Reklam ver"],camp:["camp","Kampanya"],collab:["","Collab"]};
+const WD=["Pazar","Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"];
+const MO=["Oca","Şub","Mar","Nis","May","Haz","Tem","Ağu","Eyl","Eki","Kas","Ara"];
+const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+let done={};try{done=JSON.parse(store.get("kd-done")||"{}")}catch(e){done={}}
+const startEl=document.getElementById("start");
+startEl.value=store.get("kd-start")||"";
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function render(){
+  const start=startEl.value?new Date(startEl.value+"T12:00:00"):null;
+  const box=document.getElementById("phases");box.innerHTML="";
+  PHASES.forEach((p,pi)=>{
+    const sec=document.createElement("section");sec.className="phase";
+    sec.innerHTML=`<div class="phase-head"><h2>${p.name}</h2><p>${p.note}</p></div>`;
+    DAYS.forEach((d,i)=>{
+      if(d[0]!==pi+1)return;
+      const n=i+1;let dateTxt="";
+      if(start){const dt=new Date(start);dt.setDate(dt.getDate()+i);dateTxt=`${dt.getDate()} ${MO[dt.getMonth()]}<br>${WD[dt.getDay()]}`}
+      const chips=d[5].map(c=>`<span class="chip ${CHIP[c][0]}">${CHIP[c][1]}</span>`).join("");
+      const el=document.createElement("article");el.className="day"+(done[n]?" done":"");
+      el.innerHTML=`<div><div class="num">${n}</div><div class="date">${dateTxt||"Gün "+n}</div></div>
+        <div class="main"><p class="title">${esc(d[1])}</p><p class="hook">${esc(d[2])}</p><p class="shoot">${esc(d[3])}</p></div>
+        <div class="side"><span class="time">${esc(d[4])}</span><div class="chips">${chips}</div>
+        <label class="check"><input type="checkbox" id="done-${n}" ${done[n]?"checked":""}> Paylaşıldı</label></div>`;
+      el.querySelector("input").addEventListener("change",e=>{done[n]=e.target.checked;store.set("kd-done",JSON.stringify(done));el.classList.toggle("done",e.target.checked);count()});
+      sec.appendChild(el);
+    });
+    box.appendChild(sec);
+  });
+  count();
+}
+function count(){document.getElementById("progress").textContent=`${Object.values(done).filter(Boolean).length} / 30 paylaşıldı`}
+startEl.addEventListener("change",()=>{store.set("kd-start",startEl.value);render()});
+render();
+</script>

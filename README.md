@@ -12,6 +12,7 @@ Metinlerdeki `[MAĞAZA]`, `[ŞEHİR]`, `[FİYAT]`, `[KOD]` gibi alanları kendi 
 | [icerik/05-30-gunluk-takvim.md](icerik/05-30-gunluk-takvim.md) | 30 günlük paylaşım takvimi + hashtag setleri |
 | [icerik/06-karizma-giyim-erkek-video.md](icerik/06-karizma-giyim-erkek-video.md) | **KARİZMA GİYİM** – 22 erkek giyim video senaryosu, hook bankası, caption, hashtag, 30 günlük video takvimi |
 | [icerik/07-kofteci-dayi-gaziemir-video.md](icerik/07-kofteci-dayi-gaziemir-video.md) | **KÖFTECİ DAYI Gaziemir** – alışkanlık kıran 20 video senaryosu, yerel strateji, 30 günlük takvim |
+| [icerik/08-kofteci-dayi-gaziemir-takvim.html](icerik/08-kofteci-dayi-gaziemir-takvim.html) | **KÖFTECİ DAYI Gaziemir** – 30 günlük video takvimi (saat, ekran yazısı, çekim notu) |
 
 ## Hızlı kullanım önerileri
 - **Paylaşım saati:** Hafta içi 12:00–13:30 ve 20:00–22:30, hafta sonu 11:00–14:00.
