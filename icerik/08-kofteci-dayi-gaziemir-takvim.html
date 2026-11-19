@@ -4,29 +4,29 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap">
 <style>
-/* Layout: üstte başlık + başlangıç tarihi, altında 4 haftalık aşama; her gün bir satır kartı (gün/tarih | video | saat + etiketler) */
+/* Layout: başlık + başlangıç tarihi, 4 haftalık aşama; her gün geniş bir kart: başlık satırı (gün | video | saat+etiket), altında amaç, sahne akışı, konuşma, açıklama, dikkat notu */
 :root{
-  --bg:#f7f6f3; --surface:#ffffff; --fg:#1d211f; --muted:#5f6662; --line:#e2e1db;
+  --bg:#f7f6f3; --surface:#ffffff; --sunk:#f1f0ec; --fg:#1d211f; --muted:#5f6662; --line:#e2e1db;
   --accent:#1f6b4a; --accent-soft:#e3efe8; --amber:#a35d00; --amber-soft:#fbeedb;
   --blue:#2b5c8a; --blue-soft:#e3ecf5; --done:#9aa19d;
   --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#141715; --surface:#1c201e; --fg:#e8ebe9; --muted:#9ca39f; --line:#2c312e;
+  --bg:#141715; --surface:#1c201e; --sunk:#171a19; --fg:#e8ebe9; --muted:#9ca39f; --line:#2c312e;
   --accent:#5fbf8f; --accent-soft:#1f3329; --amber:#f0a94a; --amber-soft:#3a2a14;
   --blue:#7fb0e0; --blue-soft:#1d2a38; --done:#5d6460; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#141715; --surface:#1c201e; --fg:#e8ebe9; --muted:#9ca39f; --line:#2c312e;
+  --bg:#141715; --surface:#1c201e; --sunk:#171a19; --fg:#e8ebe9; --muted:#9ca39f; --line:#2c312e;
   --accent:#5fbf8f; --accent-soft:#1f3329; --amber:#f0a94a; --amber-soft:#3a2a14;
   --blue:#7fb0e0; --blue-soft:#1d2a38; --done:#5d6460; color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.5}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:15px;line-height:1.55}
 .wrap{max-width:920px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:28px}
 header{display:flex;flex-direction:column;gap:10px}
 .eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
 h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,6vw,44px);line-height:1.05;margin:0;text-wrap:balance}
-.lead{margin:0;color:var(--muted);max-width:62ch}
+.lead{margin:0;color:var(--muted);max-width:66ch}
 .controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
 .controls label{font-weight:600;font-size:14px}
 .controls input[type=date]{font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--fg)}
@@ -36,37 +36,51 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,6vw,44px);lin
 .rhythm div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px;min-width:0}
 .rhythm b{display:block;font-family:var(--display);font-size:15px;margin-bottom:2px}
 .rhythm span{font-size:13.5px;color:var(--muted)}
-section.phase{display:flex;flex-direction:column;gap:10px}
+section.phase{display:flex;flex-direction:column;gap:14px}
 .phase-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--fg);padding-bottom:6px}
 .phase-head h2{font-family:var(--display);font-weight:700;font-size:22px;margin:0}
 .phase-head p{margin:0;color:var(--muted);font-size:14px}
-.day{display:grid;grid-template-columns:72px 1fr auto;gap:14px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:14px}
 .day.done{opacity:.55}
 .day.done .title{text-decoration:line-through;text-decoration-color:var(--done)}
-.num{font-family:var(--display);font-weight:800;font-size:28px;line-height:1;font-variant-numeric:tabular-nums}
+.top{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:start}
+.num{font-family:var(--display);font-weight:800;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
 .date{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.3}
-.main{min-width:0;display:flex;flex-direction:column;gap:4px}
-.title{font-weight:600;font-size:16px;margin:0}
-.hook{font-size:14px;margin:0}
-.hook::before{content:"Ekran yazısı: ";color:var(--muted)}
-.shoot{font-size:13.5px;color:var(--muted);margin:0}
+.head{min-width:0;display:flex;flex-direction:column;gap:4px}
+.title{font-family:var(--display);font-weight:700;font-size:18px;margin:0;line-height:1.25;text-wrap:balance}
+.hook{font-size:14.5px;margin:0;font-weight:600}
+.hook small{font-weight:500;color:var(--muted);font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-right:6px}
 .side{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
-.time{font-weight:600;font-variant-numeric:tabular-nums;font-size:14px}
+.time{font-weight:600;font-variant-numeric:tabular-nums;font-size:14px;white-space:nowrap}
+.len{font-size:12.5px;color:var(--muted)}
 .chips{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end}
 .chip{font-size:11.5px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
 .chip.ad{background:var(--amber-soft);color:var(--amber)}
 .chip.camp{background:var(--blue-soft);color:var(--blue)}
 .check{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--muted);cursor:pointer}
 .check input{width:16px;height:16px;accent-color:var(--accent)}
+.body{display:flex;flex-direction:column;gap:12px;padding-left:78px}
+.lbl{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 4px}
+.goal{margin:0;max-width:70ch}
+.scenes{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.scenes li{display:grid;grid-template-columns:70px 1fr;gap:10px;padding:8px 12px;font-size:14px;border-top:1px solid var(--line)}
+.scenes li:first-child{border-top:0}
+.scenes .sn{font-variant-numeric:tabular-nums;color:var(--accent);font-weight:600;font-size:13px;padding-top:1px}
+.voice{margin:0;background:var(--sunk);border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 8px 8px 0;font-size:14.5px;max-width:72ch}
+.caption{margin:0;font-size:14px;background:var(--sunk);padding:10px 14px;border-radius:8px;white-space:pre-line}
+.tip{margin:0;font-size:13.5px;color:var(--amber)}
+.tip b{font-weight:600}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .foot{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
 .foot h3{font-family:var(--display);margin:0 0 6px;font-size:17px}
 .foot ul{margin:0;padding-left:18px;color:var(--muted)}
-@media (max-width:560px){
-  .day{grid-template-columns:52px 1fr;}
+@media (max-width:600px){
+  .top{grid-template-columns:48px 1fr}
   .side{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;text-align:left}
   .chips{justify-content:flex-start}
-  .num{font-size:24px}
+  .num{font-size:26px}
+  .body{padding-left:0}
+  .scenes li{grid-template-columns:56px 1fr}
 }
 </style>
 
@@ -74,7 +88,7 @@ section.phase{display:flex;flex-direction:column;gap:10px}
   <header>
     <div class="eyebrow">Köfteci Dayı · Gaziemir şubesi</div>
     <h1>30 günlük video takvimi</h1>
-    <p class="lead">Hedef: "biz hep aynı yere gideriz" diyen Gaziemirliyi bir kere denemeye getirmek, sonra tekrar getirmek. Her gün 1 Reels, aynı videonun kısa hali Story ve TikTok'a da gider. Video numaraları içerik dosyasındaki senaryolara karşılık gelir.</p>
+    <p class="lead">Hedef: "biz hep aynı yere gideriz" diyen Gaziemirliyi bir kere denemeye getirmek, sonra tekrar getirmek. Her gün 1 Reels paylaşılır, aynı video TikTok'a ve kısa hali Story'ye de gider. Her kartta videonun amacı, sahne sahne çekim planı, söylenecek metin ve video altına yazılacak açıklama var. Parantezdeki numaralar içerik dosyasındaki senaryolara karşılık gelir.</p>
   </header>
 
   <div class="controls">
@@ -86,7 +100,7 @@ section.phase{display:flex;flex-direction:column;gap:10px}
   <div class="rhythm">
     <div><b>Öğle öncesi 11:00–11:30</b><span>Izgara, tabak ve fiyat videoları. İnsanlar öğle yemeğini düşünürken görsün.</span></div>
     <div><b>Akşam 20:00–21:00</b><span>Ekip, müşteri ve skeç videoları. En çok izlenme saati.</span></div>
-    <div><b>Haftada 1 toplu çekim</b><span>Pazartesi sabahı 2–3 saat: haftanın 7 videosunu tek seferde çek.</span></div>
+    <div><b>Haftada 1 toplu çekim</b><span>Pazartesi sabahı 2–3 saat: haftanın 7 videosunu tek seferde çek, her gün sadece paylaş.</span></div>
   </div>
 
   <div class="legend">
@@ -104,6 +118,7 @@ section.phase{display:flex;flex-direction:column;gap:10px}
       <li>İlk kez gelen müşteri sayısı haftadan haftaya artıyor mu?</li>
       <li>En çok kaydedilen ve paylaşılan 2 videoyu bul, aynı formatı sonraki ay çoğalt.</li>
       <li>Damga kartında 2. ve 3. damgayı alanlar: alışkanlığı kırılan müşteriler.</li>
+      <li>Müşteri yüzü olan her videoda çekimden önce sözlü izin al, istemeyeni çekme.</li>
     </ul>
   </div>
 </div>
@@ -116,39 +131,219 @@ const PHASES=[
  {name:"4. hafta · Alışkanlığa çevir",note:"Tekrar gelmeleri için sebep ver."}
 ];
 const DAYS=[
- [1,"Bornova, Buca, Alsancak… artık Gaziemir (7b)","BORNOVA ✅ BUCA ✅ ALSANCAK ✅ VE ARTIK GAZİEMİR 📍","İzmir haritasında şubeler tek tek işaretlenir, sonra ızgara ve tabak servisi.","11:30",["collab","ad"]],
- [1,"Ekibimizle tanışın: \"Artık komşuyuz\" (7)","Gaziemirli değiliz ama artık komşuyuz.","Şube sahibi kapıda konuşur, usta, garson ve kasa birer cümleyle kendini tanıtır.","20:30",[]],
- [1,"Gaziemir, sana bir teklifim var (1)","GAZİEMİR, SANA BİR TEKLİFİM VAR","Usta ızgara başında kameraya konuşur: \"Bir kere gel, beğenmezsen ödeme.\"","11:30",["ad","camp"]],
- [1,"Tabakta ne var, kaç lira? (10)","Bu tabak kaç lira? Tahmin et.","Porsiyon üstten çekilir, her ürünün üstüne isim, sonda fiyat.","11:00",[]],
- [1,"Köfteler nasıl hazırlanıyor (6)","Sabah 7. Gaziemir uyurken köfteler hazırlanıyor.","Sabah hazırlığı: yoğurma, şekil verme, dizme. Sözsüz, sadece ses.","19:00",[]],
- [1,"Mutfak ve temizlik turu (9)","Mutfağımıza gel, gizlimiz saklımız yok.","Tezgâh, ızgara, dolap, bone ve eldivenli ekip. Tek plan, yürüyerek.","20:30",[]],
- [1,"Hangi şubede yemiştin? (7c)","Köfteci Dayı'yı duydun mu?","Gaziemir sokaklarında röportaj. Duymayanlara tadım yaptırılır.","13:00",[]],
+/* ---------- 1. HAFTA ---------- */
+{p:1,t:"Bornova, Buca, Alsancak… artık Gaziemir (7b)",hook:"BORNOVA ✅ BUCA ✅ ALSANCAK ✅ VE ARTIK GAZİEMİR 📍",len:"15–18 sn",time:"11:30",tags:["collab","ad"],
+ goal:"Kampanyanın açılış videosu. Gaziemirliye \"bu bilinmeyen bir yer değil\" mesajını verir. İzmir'in üç semtinde zaten sevilen markanın artık kapısının önüne geldiğini gösterir. Tüm ay boyunca reklamda kullanılacak ana video budur.",
+ scenes:[["0–2 sn","İzmir haritası ekranda, Bornova'ya pin düşer, \"BORNOVA ✅\" yazısı."],["2–4 sn","Buca'ya pin, \"BUCA ✅\"."],["4–6 sn","Alsancak'a pin, \"ALSANCAK ✅\"."],["6–8 sn","Gaziemir'e büyük, parlayan pin. \"VE ARTIK… GAZİEMİR 📍\". Ses efekti veya müzikte vuruş."],["8–14 sn","Izgarada cızırdayan köfteler, usta çeviriyor, tabak servise çıkıyor, masaya konuyor."],["14–17 sn","Dükkânın dışı, tabela net görünür. Kapanış kartı: KÖFTECİ DAYI – Gaziemir, adres."]],
+ voice:"(Seslendirme) \"Bornova'da yediysen, Buca'da yediysen, Alsancak'ta yediysen bilirsin. Aynı tarif, aynı lezzet. Artık Bornova'ya kadar gitmene gerek yok. Köfteci Dayı, artık Gaziemir'de.\"",
+ caption:"Bornova, Buca, Alsancak derken sıra Gaziemir'e geldi 📍\nDiğer şubelerde yemiş olanlar, yorumlara hangi şubeyi bildiğinizi yazın 👇\n📍[ADRES] · ⏰[SAATLER]\n#köftecidayıgaziemir #gaziemir #izmirköfte",
+ tip:"Merkez hesabıyla ortak gönderi (collab) olarak paylaşmayı merkezden iste. Harita için Canva veya CapCut'taki hazır harita şablonları yeterli."},
 
- [2,"Kör tadım: Sarnıç (2)","Sarnıç'a köftemizi tattırdık.","Etiketsiz tabakla sokakta tadım, gerçek puanlar ekrana yazılır.","11:30",["ad"]],
- [2,"İlk kez gelen müşteri (4)","İlk kez geldi, ikinci porsiyonu istedi.","Kasada \"İlk kez mi?\" sorusu, yemek sonrası kısa yorum. İzin alarak.","20:30",[]],
- [2,"Serbest Bölge öğle arası (11)","Öğle arası 1 saat mi? 10 dakikada masadasın.","Siparişten masaya kronometreli servis. İş kıyafetli müşteriler, izinli.","11:00",[]],
- [2,"Komşum söyledi, geldim (5)","Gaziemir'de bizi reklam değil, komşular anlatıyor.","Müşterilere \"Bizi nereden duydunuz?\" sorusu, kısa cevaplar art arda.","20:30",[]],
- [2,"Kör tadım: Aktepe (2)","Aktepe'ye köftemizi tattırdık.","Sarnıç videosunun aynısı, farklı mahalle.","11:30",[]],
- [2,"Izgara başında, sesi aç (8)","Sesi aç 🔊","Yakın çekim: cızırdayan köfte, alev, közlenmiş biber. Ses açık.","11:00",[]],
- [2,"\"Biz hep oraya gideriz\" skeci (3)","Her grupta bir \"olmaz biz hep oraya gideriz\" arkadaşı vardır.","Arkadaş grubu skeci: en çok itiraz eden ikinci porsiyonu ister.","20:30",[]],
+{p:1,t:"Ekibimizle tanışın: \"Artık komşuyuz\" (7)",hook:"Gaziemirli değiliz ama artık komşuyuz.",len:"20–25 sn",time:"20:30",tags:[],
+ goal:"İnsanlar dükkâna değil insana gelir. Şube sahibinin Gaziemirli olmadığını saklamadan, \"Gaziemir'i seçtik\" diyerek samimiyet kurar. Ekibin yüzlerini tanıtır ki müşteri ilk gelişte kendini yabancı hissetmesin.",
+ scenes:[["0–3 sn","Şube sahibi dükkân kapısında, tabela arkada, kameraya bakarak konuşmaya başlar."],["3–8 sn","İçeri yürür, kamera arkasından takip eder. Ekip ızgarada ve kasada çalışıyor."],["8–14 sn","Ekip tek tek kameraya döner: usta, garson, kasadaki çalışan birer cümle söyler ve el sallar."],["14–20 sn","Şube sahibi bir masaya tabak ve çay koyar, sandalyeyi çeker (\"buyur otur\" hareketi)."],["20–23 sn","Kapanış kartı: \"Artık komşuyuz.\" + adres."]],
+ voice:"Sahip: \"Merhaba Gaziemir. Ben [İSİM], Köfteci Dayı Gaziemir şubesinin sahibiyim. Gaziemirli değilim, saklamayacağım. Ama Bornova'da, Buca'da, Alsancak'ta sevilen bu köfteyi buraya getirmek istedim, Gaziemir'i seçtim.\"\nUsta: \"Ben [İSİM], ızgaradayım.\" · Garson: \"Ben [İSİM], sizi ben karşılıyorum.\" · Kasa: \"Ben [İSİM], hesap bende.\"\nSahip: \"Burada yeniyiz, biliyorum. Sizi yıllardır tanıyormuş gibi ağırlayacağız. Gelin, bir çayımızı için.\"",
+ caption:"Gaziemirli değiliz ama artık Gaziemir'deyiz. Komşuluğumuz hayırlı olsun 🤝\nBizi mağazada bu yüzler karşılıyor. Gelince isimleriyle seslenin, çok sevinirler 😊\n📍[ADRES]",
+ tip:"Ekipte Gaziemir veya çevre semtlerden biri varsa mutlaka \"Ben Sarnıç'tanım\" gibi söylesin. Ezberlenmiş gibi değil, sohbet eder gibi konuşulsun; 2–3 deneme çekimi yapın."},
 
- [3,"Getir arkadaşını (16)","Hep gittiğin yerden bir arkadaşını getir.","İki arkadaş masada, kampanya ekranda yazılı. Etiketleme çağrısı.","11:30",["camp"]],
- [3,"Kör tadım: Emrez (2)","Emrez'e köftemizi tattırdık.","Kör tadım serisi, üçüncü mahalle.","11:30",[]],
- [3,"Damga kartı (17)","5 kere gel, 6. porsiyon bizden.","Karta damga basılırken yakın çekim, kartın tamamı gösterilir.","20:30",["camp"]],
- [3,"İlk kez gelen müşteri (4)","İlk kez geldi, ne dedi?","Yeni müşterilerle kısa röportaj, 2–3 kişi art arda.","20:30",[]],
- [3,"Öğrenciyken Bornova'da yerdin (7d)","Ege'de okurken Bornova'da yerdin…","Eski fotoğraf havası, sonra Gaziemir şubesinde aynı tabak.","20:30",[]],
- [3,"Çekiliş: 1 ay bedava öğle yemeği (19)","1 ay öğle yemeği bizden.","Kampanya kurallarını anlatan kısa video, Gaziemirli 2 arkadaşı etiketle.","19:00",["camp","ad"]],
- [3,"Maç akşamı (15)","Maç bizde, köfte bizde.","Maç günü ekranlı salon ve dolu masalar. Maç olan güne kaydır.","Maçtan 2 sa önce",[]],
+{p:1,t:"Gaziemir, sana bir teklifim var (1)",hook:"GAZİEMİR, SANA BİR TEKLİFİM VAR",len:"15 sn",time:"11:30",tags:["ad","camp"],
+ goal:"Alışkanlığı kıran asıl video. \"Ya beğenmezsem, param boşa gider\" korkusunu doğrudan ortadan kaldırır. Rakibi kötülemeden \"bir kere de bizi dene\" der. İlk hafta reklam bütçesinin çoğu bu videoya gider.",
+ scenes:[["0–2 sn","Usta ızgara başında, önlüklü, doğrudan kameraya döner. Büyük yazı: GAZİEMİR, SANA BİR TEKLİFİM VAR."],["2–8 sn","Usta konuşur, arkada köfteler pişiyor. Yakın plan yüz."],["8–12 sn","Köfteler ızgaradan tabağa, tabak tezgâha konur."],["12–15 sn","Usta tabağı kameraya uzatır: \"Gel bir dene.\" Kapanış kartı + adres."]],
+ voice:"\"Biliyorum, herkesin bir köftecisi var. Yıllardır gittiğin bir yer. Ona lafım yok. Ama bir kere, sadece bir kere bize gel. Beğenmezsen hesabı ödeme. Şart yok, gel bir dene.\"\n(Merkez onaylamazsa son cümle: \"İlk gelişinde ayranın / tatlın bizden.\")",
+ caption:"Beğenmezsen ödemiyorsun. Bu kadar eminiz. 🔥\nKasada \"videoyu gördüm\" demen yeterli.\nKampanya [TARİH]'e kadar, sadece Gaziemir şubesinde.\n📍[ADRES]",
+ tip:"Bu kampanyayı paylaşmadan önce mutlaka merkezin onayını al ve kasadaki herkese anlat. Söz verip tutulmazsa video ters teper."},
 
- [4,"Yorum yaz, tatlı kap (18)","Google'a yorum yaz, tatlın bizden.","Müşteri telefondan yorumu gösterir, tatlı masaya gelir.","20:30",["camp"]],
- [4,"Kör tadım: Gazikent (2)","Gazikent'e köftemizi tattırdık.","Kör tadım serisi, dördüncü mahalle.","11:30",[]],
- [4,"Muhtar / tanınmış esnaf ziyareti (14)","Mahallemizin sevilen ismi bize konuk oldu.","İzinle davet edilen mahalle siması yemekte, kısa sohbet.","20:30",[]],
- [4,"Sen seç: yeni menü anketi (20)","Kaşarlı mı acılı mı? Sen seç.","İki ürün yan yana. Story'de anket sticker'ı ile birlikte paylaş.","19:00",[]],
- [4,"İlk kez gelen müşteri (4)","Bir kere geldi, gerisi geldi.","Damga kartında 2. damgasını alan bir müşteri varsa onu çek.","20:30",[]],
- [4,"Çekiliş sonucu","Kazanan belli oldu!","Kazanan şubede ilk öğle yemeğini yerken (izinli).","20:00",[]],
- [4,"Kör tadım: Atatürk Mah. (2)","Atatürk Mahallesi'ne köftemizi tattırdık.","Kör tadım serisi, beşinci mahalle.","11:30",[]],
- [4,"Skeç 2. bölüm (3)","Geçen hafta itiraz eden arkadaş geri döndü.","Aynı grup, bu sefer \"olmaz\" diyen arkadaş herkesi kendisi getirir.","20:30",[]],
- [4,"1 ayın teşekkür videosu","Bu ay kaç Gaziemirli ilk kez geldi?","Ayın sayısı (ilk kez gelenler), müşteri anları kurgusu, ekip el sallar.","20:30",["collab"]]
+{p:1,t:"Tabakta ne var, kaç lira? (10)",hook:"Bu tabak kaç lira? Tahmin et.",len:"10–12 sn",time:"11:00",tags:[],
+ goal:"Yeni bir yere gitmeyen insanın ikinci sorusu \"pahalı mıdır?\". Porsiyonu ve fiyatı açıkça göstererek bu soruyu bitirir. Yorumlara tahmin yazdırdığı için etkileşim de getirir.",
+ scenes:[["0–2 sn","Masaya tabak konur, üstten çekim. Yazı: Bu tabak kaç lira? Tahmin et."],["2–8 sn","Tabağın üstünde her ürün ok ile gösterilir: köfte (kaç adet), pilav/patates, piyaz, közlenmiş biber, domates, ekmek, ayran."],["8–10 sn","Büyük yazıyla fiyat: [FİYAT] TL."],["10–12 sn","Bir el köfteyi çatalla kesip kaldırır. Kapanış kartı."]],
+ voice:"Konuşma yok, trend bir ses kullan. Ekrandaki yazılar yeterli.",
+ caption:"Tahminin neydi? Yorumlara yaz 👇\nPorsiyon: [ÜRÜNLER]\nFiyat: [FİYAT] TL · Gaziemir'de paket servis: [VAR / YOK]\n📍[ADRES]",
+ tip:"Fiyatı merkezin güncel menüsüyle kontrol et. Fiyat değişirse video yanlış bilgi vermesin, gerekirse açıklamayı güncelle."},
+
+{p:1,t:"Köfteler nasıl hazırlanıyor (6)",hook:"Sabah 7. Gaziemir uyurken köfteler hazırlanıyor.",len:"15 sn",time:"19:00",tags:[],
+ goal:"\"Bilmediğim yerin mutfağına güvenmem\" düşüncesini kırar. Sabahın erken saatinde emek verildiğini gösterir. Sesli ve sözsüz olduğu için çok izlenir, sonuna kadar izletir.",
+ scenes:[["0–2 sn","Dükkân dışı, sabah ışığı, kepenk açılıyor. Yazı: Sabah 7. Gaziemir uyurken…"],["2–6 sn","Eldivenli eller harcı yoğuruyor, yakın çekim."],["6–10 sn","Köfteler şekil alıyor, tepsiye tek tek diziliyor. Hızlandırılmış."],["10–13 sn","Dolu tepsiler dolaba giriyor, ızgara yakılıyor."],["13–15 sn","İlk köfte ızgaraya konur, cızırdama sesi. Yazı: …köfteler hazırlanıyor."]],
+ voice:"Konuşma yok. Sadece ortam sesi (yoğurma, tepsi, ızgara) ve çok hafif müzik.",
+ caption:"Her sabah aynı özen. ☀️\nÖğle yemeğin şimdiden hazırlanıyor.\n📍Köfteci Dayı Gaziemir",
+ tip:"Malzeme veya et hakkında merkezin onaylamadığı hiçbir iddia (\"%100 dana\" vb.) yazma. Sadece gerçekte olanı göster."},
+
+{p:1,t:"Mutfak ve temizlik turu (9)",hook:"Mutfağımıza gel, gizlimiz saklımız yok.",len:"20 sn",time:"20:30",tags:[],
+ goal:"Yeni bir yere gitmeyen insanın en büyük sessiz sorusu: \"Temiz mi?\" Bu video o soruyu kimse sormadan cevaplar. Özellikle aileler ve çocuklu anneler için güven verir.",
+ scenes:[["0–3 sn","Kamera kapıdan girer, tezgâhın arkasına geçer. Yazı: Mutfağımıza gel."],["3–8 sn","Parlayan tezgâh, temiz ızgara, düzenli raflar. Tek plan, yürüyerek."],["8–12 sn","Ekip bone ve eldivenle çalışıyor, el yıkama anı."],["12–16 sn","Dolap açılır: düzenli, etiketli kaplar."],["16–20 sn","Usta kameraya döner, tabağı uzatır. Yazı: Gizlimiz saklımız yok."]],
+ voice:"Usta: \"Burası bizim mutfağımız. Ne pişiyorsa gözünüzün önünde pişiyor. Merak eden gelsin, kapımız açık.\"",
+ caption:"Mutfağımız gözünüzün önünde. 🧼\nTemizlik bizim için pazarlık konusu değil.\n📍[ADRES]",
+ tip:"Çekimden önce mutfağı gerçekten toparla. Arka planda tek bir dağınık köşe bile yorumlarda konu olur."},
+
+{p:1,t:"Hangi şubede yemiştin? (7c)",hook:"Köfteci Dayı'yı duydun mu?",len:"20–25 sn",time:"13:00",tags:[],
+ goal:"Gaziemirlilerin markayı zaten tanıdığını gösterir. \"Bornova'da yemiştim\" diyenler ücretsiz referans olur. Duymamış olanlara tadım yaptırmak da merak uyandırır.",
+ scenes:[["0–2 sn","Gaziemir caddesi, elinde mikrofon tutan çalışan. Yazı: Köfteci Dayı'yı duydun mu?"],["2–10 sn","3–4 kişiye sorulur. Bilenler: \"Bornova'da / Alsancak'ta yemiştim.\""],["10–14 sn","Bilenlere: \"Artık Gaziemir'de, şurada!\" Kamera dükkânı gösterir, tepkileri çekilir."],["14–20 sn","Duymamış birine tabaktan bir köfte uzatılır, tadına bakar, yorumunu söyler."],["20–25 sn","Yazı: Gaziemir'in yarısı bizi zaten tanıyormuş 😄 + adres."]],
+ voice:"Soru: \"Köfteci Dayı'yı duydun mu? Hangi şubede yedin? Artık Gaziemir'de olduğunu biliyor muydun?\"",
+ caption:"Sorduk: Gaziemir bizi tanıyor mu? 😄\nSen hangi şubede yedin? Yorumlara yaz 👇\n📍[ADRES]",
+ tip:"Pazar öğlen cadde kalabalıkken çek. Kimseyi zorla çekme; kamerayı istemeyeni kurgudan çıkar."},
+
+/* ---------- 2. HAFTA ---------- */
+{p:2,t:"Kör tadım: Sarnıç (2)",hook:"Sarnıç'a köftemizi tattırdık.",len:"20–25 sn",time:"11:30",tags:["ad"],
+ goal:"Mahalle mahalle kör tadım serisinin ilk bölümü. Marka söylenmeden tattırılır, gerçek tepkiler gösterilir. İzleyen Sarnıçlı kendi komşusunu görür. Bu hafta reklam bu videoya verilir.",
+ scenes:[["0–2 sn","Sarnıç'ta bilinen bir köşe veya cadde. Yazı: Sarnıç'a köftemizi tattırdık."],["2–6 sn","Etiketsiz, sade tabakta köfte uzatılır: \"Tadına bakar mısınız, 10 üzerinden puan verir misiniz?\""],["6–16 sn","4–5 kişinin yüz ifadeleri ve puanları art arda. Puanlar ekrana büyük yazılır."],["16–20 sn","Marka söylenir: \"Bu Köfteci Dayı'nın köftesi, Gaziemir şubesinden.\" Tepkiler."],["20–25 sn","Ortalama puan ekranda. Kapanış kartı + adres."]],
+ voice:"\"Merhaba, kısa bir tadım yapıyoruz. Tadına bakar mısınız? 10 üzerinden kaç verirsiniz? … Bu Köfteci Dayı'nın köftesi, Gaziemir şubemiz şurada.\"",
+ caption:"Sarnıç puanını verdi! Ortalama: [PUAN]/10 🔥\nSıradaki mahalle neresi olsun? Yorumlara yaz 👇\n📍Köfteci Dayı Gaziemir – [ADRES]",
+ tip:"Puanları değiştirme veya sadece iyileri koyma. 7 veren birini de bırak, dürüstlük güven yaratır. Köfteleri sıcak tutmak için termos kap kullan."},
+
+{p:2,t:"İlk kez gelen müşteri (4)",hook:"İlk kez geldi, ikinci porsiyonu istedi.",len:"15–20 sn",time:"20:30",tags:[],
+ goal:"Alışkanlığını kırıp ilk kez gelen birinin deneyimini gösterir. İzleyen kişi \"o da benim gibiymiş, gelmiş, beğenmiş\" diye düşünür. Seri boyunca haftada 1–2 kez tekrarlanır.",
+ scenes:[["0–3 sn","Kasada çalışan sorar: \"İlk kez mi geldiniz?\" Müşteri: \"Evet.\""],["3–6 sn","Tabak masaya gelir, müşteri ilk lokmayı alır."],["6–12 sn","Yemek sonrası kısa röportaj: \"Nasıldı? Normalde nerede yersiniz? Tekrar gelir misiniz?\""],["12–16 sn","Müşterinin en güçlü cümlesi büyük yazıyla ekranda."],["16–20 sn","Kapanış kartı."]],
+ voice:"Sorular: \"İlk kez mi geldiniz? Bizi nereden duydunuz? Nasıldı? Tekrar gelir misiniz?\"",
+ caption:"\"İlk kez geldim ama son olmayacak.\" – [İsmin baş harfi], Gaziemir\nSen ne zaman geliyorsun? 😊\n📍[ADRES]",
+ tip:"Mutlaka önce izin al. Yüzünün görünmesini istemeyeni sadece tabak ve el ile çek, sesini kullan."},
+
+{p:2,t:"Serbest Bölge öğle arası (11)",hook:"Öğle arası 1 saat mi? 10 dakikada masadasın.",len:"15 sn",time:"11:00",tags:[],
+ goal:"Gaziemir'in en büyük kitlesi Ege Serbest Bölge ve sanayi çalışanları. Öğle arası kısa olan bu kişiler bildikleri yerden çıkmaz çünkü vakit kaybetmekten korkar. Bu video hızlı servisi kanıtlar.",
+ scenes:[["0–2 sn","İş kıyafetli 2–3 kişi dükkâna giriyor. Yazı: Öğle arası 1 saat mi?"],["2–4 sn","Ekranda kronometre başlar, sipariş verilir."],["4–10 sn","Hızlandırılmış: ızgara, tabak hazırlığı, servis."],["10–12 sn","Tabak masada, kronometre durur: [SÜRE] dakika."],["12–15 sn","Yazı: 10 dakikada masadasın. Toplu sipariş bilgisi + telefon."]],
+ voice:"Konuşma yok, kronometre sesi ve hızlı müzik. Son karede usta: \"Öğle arası bizde.\"",
+ caption:"Serbest Bölge, sanayi, Gaziemir'in çalışanları: öğle arası bizde ⏱️\n5 kişi ve üzeri toplu siparişe [İKRAM] bizden. 📞[TELEFON]\n📍[ADRES]",
+ tip:"Kronometreyi gerçekten tut, gerçek süreyi yaz. Toplu sipariş ikramını merkezle konuş."},
+
+{p:2,t:"Komşum söyledi, geldim (5)",hook:"Gaziemir'de bizi reklam değil, komşular anlatıyor.",len:"15–20 sn",time:"20:30",tags:[],
+ goal:"Ağızdan ağıza yayıldığı hissini verir. Yeni bir yere gitmek için en güçlü sebep, tanıdığın birinin tavsiyesidir. Bu video o tavsiyeyi ekrana taşır.",
+ scenes:[["0–2 sn","Yazı: Bizi nereden duydunuz?"],["2–14 sn","Masalardaki 4–5 müşteri tek tek cevap verir: \"Komşum söyledi\", \"İş arkadaşım getirdi\", \"Kızım Instagram'da görmüş\"."],["14–18 sn","Yazı: Gaziemir'de bizi reklam değil, komşular anlatıyor."],["18–20 sn","Kapanış kartı."]],
+ voice:"Soru: \"Bizi nereden duydunuz?\" Cevaplar kurgulanmadan, olduğu gibi.",
+ caption:"Bizi size kim anlattı? Etiketleyin, ona teşekkür edelim 🤝\n📍[ADRES]",
+ tip:"Yorumda etiketlenen kişilere DM'den küçük bir ikram teklif et; çekilişe gerek kalmadan yayılma sağlar."},
+
+{p:2,t:"Kör tadım: Aktepe (2)",hook:"Aktepe'ye köftemizi tattırdık.",len:"20–25 sn",time:"11:30",tags:[],
+ goal:"Kör tadım serisinin ikinci mahallesi. Seri olduğu için takipçiler \"sırada hangi mahalle var\" diye bekler. Aktepeliler kendi mahallelerini görünce paylaşır.",
+ scenes:[["0–2 sn","Aktepe'de tanınan bir nokta. Yazı: Aktepe'ye köftemizi tattırdık."],["2–16 sn","Sarnıç videosunun aynı akışı: tadım, yüz ifadeleri, puanlar."],["16–20 sn","Marka açıklanır."],["20–25 sn","Ekranda karşılaştırma: Sarnıç [PUAN] – Aktepe [PUAN]. \"Hangi mahalle kazanacak?\""]],
+ voice:"Sarnıç videosuyla aynı sorular.",
+ caption:"Sarnıç [PUAN], Aktepe [PUAN]. Mahalleler yarışıyor 😄\nSıradaki: Emrez. Senin mahallen ne zaman? 👇",
+ tip:"Mahalleler arası puan yarışı serinin izlenmesini artırır. Puan tablosunu her videoda güncelle."},
+
+{p:2,t:"Izgara başında, sesi aç (8)",hook:"Sesi aç 🔊",len:"10 sn",time:"11:00",tags:[],
+ goal:"Öğle yemeği öncesi iştah açan kısa video. Tamamen görüntü ve sesle satış yapar. Kaydedilme ve tekrar izlenme oranı yüksek olur, algoritma bunu sever.",
+ scenes:[["0–2 sn","Kapkaranlık ekran, sadece cızırdama sesi. Yazı: Sesi aç 🔊"],["2–5 sn","Izgaraya düşen köfteler, çok yakın plan, alev."],["5–8 sn","Köftelerin çevrilmesi, közlenmiş biber ve domates."],["8–10 sn","Tabak hazır, buhar çıkıyor. Kapanış kartı."]],
+ voice:"Konuşma ve müzik yok. Sadece ızgara sesi.",
+ caption:"Öğle yemeğine ne yiyeceğini düşünüyordun… 🔥\nKaydet, acıkınca lazım olacak 📌\n📍Köfteci Dayı Gaziemir",
+ tip:"Telefonu ızgaraya çok yakın tutma, ısıdan koru. Sesi iyi almak için telefonun mikrofonunu ızgaraya yönlendir."},
+
+{p:2,t:"\"Biz hep oraya gideriz\" skeci (3)",hook:"Her grupta bir \"olmaz biz hep oraya gideriz\" arkadaşı vardır.",len:"25–30 sn",time:"20:30",tags:[],
+ goal:"Alışkanlığı mizahla anlatır. İzleyen herkes ya o arkadaştır ya da öyle bir arkadaşı vardır, bu yüzden etiketleme ve paylaşım çok olur. Rakip esnafın adı asla geçmez.",
+ scenes:[["0–3 sn","3–4 arkadaş sokakta. Biri: \"Bugün başka yere gidelim mi?\""],["3–8 sn","İtiraz eden arkadaş abartılı tepki verir: \"Olmaaaz! Biz hep bizim yere gideriz!\""],["8–14 sn","İkna sahnesi: kolundan tutup çekiştirerek Köfteci Dayı'ya götürürler."],["14–22 sn","Masada itiraz eden arkadaş önce burun kıvırır, ilk lokmadan sonra yüz ifadesi değişir."],["22–28 sn","Son sahne: aynı arkadaş garsona el kaldırır: \"Bir porsiyon daha!\" Diğerleri ona bakar."],["28–30 sn","Yazı: Etiketle o arkadaşını 😅 + kapanış kartı."]],
+ voice:"İtiraz eden: \"Olmaz, biz hep oraya gideriz, ben başka yerde yemem!\" · Son: \"Usta, bir porsiyon daha!\" · Arkadaş: \"Hani başka yerde yemiyordun?\"",
+ caption:"Her grupta bir tane vardır 😅 Etiketle o arkadaşını, bu sefer buraya gelin.\n📍Köfteci Dayı Gaziemir",
+ tip:"Ekipten veya müşterilerden doğal oyunculuğu olan birini seç. Abartılı ama sevimli olsun; rakip dükkânın adı, tabelası, rengi hiçbir yerde görünmesin."},
+
+/* ---------- 3. HAFTA ---------- */
+{p:3,t:"Getir arkadaşını (16)",hook:"Hep gittiğin yerden bir arkadaşını getir.",len:"15 sn",time:"11:30",tags:["camp"],
+ goal:"Alışkanlığı tek kişide değil, grupta kırar. Bir kişi ikna olunca yanında birini getirir. Bu hafta başlayan kampanyaların ilki.",
+ scenes:[["0–3 sn","Masada tek başına oturan müşteri telefonla arkadaşını arar: \"Gel buraya!\""],["3–7 sn","Arkadaşı kapıdan girer, karşılanır, masaya oturur."],["7–12 sn","İki tabak birlikte gelir, ikram (ayran/tatlı) masaya konur. Ekranda kampanya yazısı."],["12–15 sn","İkisi kameraya kadeh kaldırır gibi ayran kaldırır. Kapanış kartı."]],
+ voice:"Ekran yazısı: \"Arkadaşını getir, ikinize de [İKRAM] bizden. Kasada 'arkadaşımı getirdim' demen yeterli.\"",
+ caption:"Hep gittiğin yerden bir arkadaşını getir, ikinize de [İKRAM] bizden 🤝\nKampanya [TARİH]'e kadar · Sadece Gaziemir şubesi\nYorumlara getireceğin arkadaşını etiketle 👇",
+ tip:"Merkez onayı gerekir. Kasada nasıl uygulanacağını (kayıt, sayı sınırı) önceden belirle."},
+
+{p:3,t:"Kör tadım: Emrez (2)",hook:"Emrez'e köftemizi tattırdık.",len:"20–25 sn",time:"11:30",tags:[],
+ goal:"Serinin üçüncü mahallesi. Artık izleyiciler formatı tanıyor; yorumlarda kendi mahallelerini istemeye başlarlar.",
+ scenes:[["0–2 sn","Emrez'den tanınan bir nokta. Yazı: Emrez'e köftemizi tattırdık."],["2–16 sn","Tadım, yüz ifadeleri, puanlar."],["16–20 sn","Marka açıklanır."],["20–25 sn","Puan tablosu: Sarnıç – Aktepe – Emrez. Yazı: Lider kim?"]],
+ voice:"Önceki tadımlarla aynı sorular. Ek soru: \"Gaziemir şubemizi biliyor muydunuz?\"",
+ caption:"Puan tablosu güncellendi 📊 Sarnıç [P] · Aktepe [P] · Emrez [P]\nSıradaki mahalleyi yorumlarda sen seç 👇",
+ tip:"Yorumlarda en çok istenen mahalleyi bir sonraki tadıma koy ve videoda \"sizin isteğiniz üzerine\" de."},
+
+{p:3,t:"Damga kartı (17)",hook:"5 kere gel, 6. porsiyon bizden.",len:"12 sn",time:"20:30",tags:["camp"],
+ goal:"Tek bir ziyareti alışkanlığa çevirmenin en garantili yolu. Müşterinin cüzdanında Köfteci Dayı kartı durdukça eski yerine değil buraya gelir.",
+ scenes:[["0–3 sn","Kasada kart müşteriye uzatılır, yakın çekim. Yazı: 5 kere gel…"],["3–7 sn","Hızlı geçişlerle 5 farklı gün, karta damga basılıyor (tak tak sesi)."],["7–10 sn","Kart doldu, 6. porsiyon masaya geliyor. Yazı: …6. porsiyon bizden."],["10–12 sn","Müşteri kartı gülerek kameraya gösterir. Kapanış kartı."]],
+ voice:"Konuşma yok, damga sesiyle ritim kurulur.",
+ caption:"Kartını kasadan al, her gelişte damga bas 🎫\n5 damga = 6. porsiyon bizden.\n📍Köfteci Dayı Gaziemir",
+ tip:"Merkezin hazır bir sadakat kartı varsa onu kullan. Yoksa şubeye özel basit kart bastır, merkezin logo kurallarına uy."},
+
+{p:3,t:"İlk kez gelen müşteri (4)",hook:"İlk kez geldi, ne dedi?",len:"15–20 sn",time:"20:30",tags:[],
+ goal:"Serinin ikinci bölümü. Bu sefer 2–3 kişi art arda konuşur; \"çok kişi ilk kez gelip beğeniyor\" algısı oluşur.",
+ scenes:[["0–2 sn","Yazı: İlk kez geldiler, ne dediler?"],["2–14 sn","3 farklı masadan kısa yorumlar, her biri 3–4 sn. En güçlü cümle ekrana yazılır."],["14–18 sn","Bir müşteri damga kartını alırken: \"Tekrar geleceğim.\""],["18–20 sn","Kapanış kartı."]],
+ voice:"Sorular: \"İlk kez mi? Nasıldı? Bir kelimeyle anlat.\"",
+ caption:"Bu hafta ilk kez gelenler konuştu 🗣️\nSen de ilk kez gelirsen bize söyle, seni de çekelim 😄\n📍[ADRES]",
+ tip:"\"Bir kelimeyle anlat\" sorusu kısa ve kurguya uygun cevaplar verir."},
+
+{p:3,t:"Öğrenciyken Bornova'da yerdin (7d)",hook:"Ege'de okurken Bornova'da yerdin…",len:"15–18 sn",time:"20:30",tags:[],
+ goal:"25–40 yaş Gaziemirlileri nostaljiyle yakalar. Çoğu Bornova'da (Ege Üniversitesi) veya Buca'da (Dokuz Eylül) okumuştur; markayı oradan tanır. \"Sevdiğin lezzet sana geldi\" duygusunu verir.",
+ scenes:[["0–3 sn","Eski fotoğraf filtresiyle kampüs/öğrenci görüntüsü veya stok kampüs görseli. Yazı: Ege'de okurken Bornova'da yerdin…"],["3–6 sn","Yazı: Dokuz Eylül'deyken Buca'da yerdin…"],["6–9 sn","Filtre kalkar, renkli görüntü: Gaziemir şubesinin kapısı. Yazı: Mezun oldun, Gaziemir'e döndün…"],["9–15 sn","Aynı tabak masaya geliyor, biri ilk lokmayı alıp gülümsüyor. Yazı: Köfte de seninle geldi."],["15–18 sn","Kapanış kartı."]],
+ voice:"(Seslendirme, isteğe bağlı) \"Okul yılların, arkadaşların, o köfte… Artık hepsi Gaziemir'de.\"",
+ caption:"Ege'li misin, Dokuz Eylül'lü mü? Yorumlara yaz 🎓\nÖğrencilik lezzeti artık Gaziemir'de 📍",
+ tip:"Başkasının fotoğrafını izinsiz kullanma. Kendi çektiğin veya ücretsiz stok görselleri kullan."},
+
+{p:3,t:"Çekiliş: 1 ay bedava öğle yemeği (19)",hook:"1 ay öğle yemeği bizden.",len:"15 sn",time:"19:00",tags:["camp","ad"],
+ goal:"Takipçi sayısını yerel olarak büyütür. Gaziemirli 2 arkadaş etiketleme şartı sayesinde yeni takipçiler de Gaziemir'den gelir. Kazanan kişi bir ay boyunca her gün gelir ve alışkanlık kazanır.",
+ scenes:[["0–3 sn","Usta kameraya bakar, elinde tabak. Yazı: 1 AY ÖĞLE YEMEĞİ BİZDEN."],["3–10 sn","Katılım şartları ekranda tek tek belirir: takip et, beğen, Gaziemir'de yaşayan/çalışan 2 arkadaşını etiketle."],["10–13 sn","Sonuç tarihi: [TARİH] akşamı story'de."],["13–15 sn","Usta: \"Bol şans Gaziemir!\" Kapanış kartı."]],
+ voice:"Usta: \"Gaziemir, bir ay boyunca öğle yemeğin bizden. Şartlar aşağıda, bol şans!\"",
+ caption:"🎁 ÇEKİLİŞ: 1 AY BEDAVA ÖĞLE YEMEĞİ 🎁\n1️⃣ @[HESAP] takip et\n2️⃣ Bu videoyu beğen\n3️⃣ Gaziemir'de yaşayan/çalışan 2 arkadaşını etiketle (her yorum ayrı katılım)\nSonuç: [TARİH] akşamı story'de. Kazanan şubeye gelerek ödülü kullanır.",
+ tip:"Merkez onayı ve çekiliş kurallarının açık yazılması şart. Ödülü \"günde 1 porsiyon, hafta içi\" gibi net sınırla."},
+
+{p:3,t:"Maç akşamı (15)",hook:"Maç bizde, köfte bizde.",len:"12–15 sn",time:"Maçtan 2 sa önce",tags:[],
+ goal:"Akşam saatlerinde dükkânı doldurur. Maç izlemek için gidilen yer de bir alışkanlıktır; bu video o alışkanlığa alternatif sunar.",
+ scenes:[["0–2 sn","Ekranda maç yayını (logo görünmeden), yazı: Bu akşam maç var."],["2–6 sn","Dolu masalar, köfte tabakları, ayranlar."],["6–10 sn","Gol anı tepkisi (önceki bir maçtan), masadakiler ayağa kalkıyor."],["10–15 sn","Yazı: Maç bizde, köfte bizde. Saat ve adres."]],
+ voice:"Usta: \"Bu akşam maçı bizde izle. Ekran hazır, köfte hazır.\"",
+ caption:"Bu akşam [MAÇ] bizde ⚽ Ekran hazır, köfte hazır.\nMasa ayırtmak için 📞[TELEFON]\n📍[ADRES]",
+ tip:"Şubede ekran yoksa bu videoyu atla, yerine \"Havalimanı öncesi son İzmir köftesi\" (12) videosunu çek. Yayıncı kuruluş logosu ve maç görüntüsü telif sorunu yaratabilir, ekranı bulanık çek."},
+
+/* ---------- 4. HAFTA ---------- */
+{p:4,t:"Yorum yaz, tatlı kap (18)",hook:"Google'a yorum yaz, tatlın bizden.",len:"12 sn",time:"20:30",tags:["camp"],
+ goal:"Google yorum sayısını artırır. İnsanlar videoyu izledikten sonra Google'da \"Gaziemir köfte\" diye arar; yorum sayısı ve puan yüksekse oraya gelir. Bu, sonraki aylar için en kalıcı yatırım.",
+ scenes:[["0–3 sn","Müşteri masada telefonunu kameraya gösteriyor: Google'da yazdığı yorum."],["3–7 sn","Garson tatlıyı masaya getiriyor, müşteri gülüyor."],["7–10 sn","Ekranda adım adım: Google'da 'Köfteci Dayı Gaziemir' ara → yorum yaz → kasada göster."],["10–12 sn","Kapanış kartı."]],
+ voice:"Garson: \"Yorumunuz için teşekkürler, tatlınız bizden!\"",
+ caption:"Google'da bize yorum yaz, kasada göster, tatlın bizden 🍮\n\"Köfteci Dayı Gaziemir\" diye aratman yeterli.\nBeğenmediğin bir şey olduysa onu da yaz, düzeltelim 🙏",
+ tip:"Sadece olumlu yorum şartı koyma; Google kurallarına aykırıdır. \"Her yoruma tatlı\" de."},
+
+{p:4,t:"Kör tadım: Gazikent (2)",hook:"Gazikent'e köftemizi tattırdık.",len:"20–25 sn",time:"11:30",tags:[],
+ goal:"Serinin dördüncü mahallesi. Puan tablosunda yarış kızışır, takipçiler kendi mahallelerini savunmaya başlar.",
+ scenes:[["0–2 sn","Gazikent'ten tanınan bir nokta. Yazı: Gazikent'e köftemizi tattırdık."],["2–16 sn","Tadım, tepkiler, puanlar."],["16–20 sn","Marka açıklanır, bilenlerin tepkisi."],["20–25 sn","Güncel puan tablosu, 4 mahalle. Yazı: Final haftaya!"]],
+ voice:"Önceki tadımlarla aynı sorular.",
+ caption:"Gazikent de puanını verdi! 📊 Tablo: [PUANLAR]\nFinal mahallesi haftaya. Tahminin? 👇",
+ tip:"Serinin sonunda kazanan mahalleye küçük bir sürpriz (o mahalleden gelene ikram) planlayabilirsin."},
+
+{p:4,t:"Muhtar / tanınmış esnaf ziyareti (14)",hook:"Mahallemizin sevilen ismi bize konuk oldu.",len:"20–30 sn",time:"20:30",tags:[],
+ goal:"Mahallede güvenilen birinin \"güzelmiş\" demesi yüz reklamdan etkilidir. Şubenin semte kabul edildiğinin işaretidir.",
+ scenes:[["0–3 sn","Konuk kapıdan girer, şube sahibi karşılar, el sıkışırlar."],["3–10 sn","Masada sohbet: konuk kendini kısaca tanıtır."],["10–20 sn","Yemek gelir, konuk tadar, yorumunu söyler."],["20–25 sn","Şube sahibi teşekkür eder, birlikte kameraya bakarlar."],["25–30 sn","Kapanış kartı."]],
+ voice:"Sahip: \"Gaziemir'e yeni geldik, sizi ağırlamak bizim için onur.\" · Konuk kendi cümleleriyle yorum yapar, metin verilmez.",
+ caption:"[KONUK ADI / ÜNVANI] bizi ziyaret etti, ağırlamaktan onur duyduk 🤝\nGaziemir'e hoş geldin dediğiniz için teşekkürler.",
+ tip:"Konuğa ne söyleyeceğini dikte etme, doğal yorumu en inandırıcısıdır. Siyasi bir kişiyle çekim yapacaksan merkezle konuş."},
+
+{p:4,t:"Sen seç: yeni menü anketi (20)",hook:"Kaşarlı mı acılı mı? Sen seç.",len:"10–12 sn",time:"19:00",tags:[],
+ goal:"Takipçiyi karar ortağı yapar. Oy veren kişi sonucu merak eder ve sonuç ürününü denemeye gelir. Story'de anketle birlikte paylaşılır.",
+ scenes:[["0–3 sn","İki tabak yan yana. Yazı: Kaşarlı mı, acılı mı?"],["3–6 sn","Soldaki tabak yakın plan, ekranda A."],["6–9 sn","Sağdaki tabak yakın plan, ekranda B."],["9–12 sn","Yazı: Yorumlara A ya da B yaz. Kazanan [TARİH]'te Gaziemir'de."]],
+ voice:"Konuşma yok veya usta: \"Sen seç, biz pişirelim.\"",
+ caption:"A mı B mi? Yorumlara yaz 👇 Story'deki ankete de oy ver.\nKazanan ürün [TARİH]'ten itibaren Gaziemir şubesinde.",
+ tip:"Menüye ürün eklemek merkezin kararıdır. Seçenekleri merkezin zaten sunduğu ürünlerden seç veya \"haftanın önerisi\" olarak sun."},
+
+{p:4,t:"İlk kez gelen müşteri, ikinci gelişi (4)",hook:"Bir kere geldi, gerisi geldi.",len:"15–20 sn",time:"20:30",tags:[],
+ goal:"Serinin dönüm noktası: ilk kez gelen biri tekrar gelmiş. Alışkanlığın gerçekten kırıldığının kanıtı. İzleyene \"bir kere gidersen sen de bağlanırsın\" mesajı verir.",
+ scenes:[["0–3 sn","2. haftada çekilen müşterinin videosundan kısa kesit. Yazı: 2 hafta önce ilk kez gelmişti…"],["3–8 sn","Aynı müşteri kapıdan giriyor, ekip ismiyle karşılıyor."],["8–14 sn","Damga kartına 2. veya 3. damga basılıyor. Müşteri: \"Artık burası benim yerim.\""],["14–20 sn","Yazı: Bir kere geldi, gerisi geldi. Kapanış kartı."]],
+ voice:"Soru: \"Tekrar hoş geldiniz! Neden tekrar geldiniz?\"",
+ caption:"2 hafta önce ilk kez gelmişti, şimdi düzenli müşterimiz 😊\nSen de bir kere gel, gerisi gelir.\n📍[ADRES]",
+ tip:"Böyle bir müşteri yoksa damga kartında en çok damgası olan kişiyle çek. Önceden izin al ve onu bilgilendir."},
+
+{p:4,t:"Çekiliş sonucu",hook:"Kazanan belli oldu!",len:"15 sn",time:"20:00",tags:[],
+ goal:"Çekilişin dürüst yapıldığını gösterir ve kazananı ilk yemeğinde çeker. Bir sonraki çekilişe güven sağlar.",
+ scenes:[["0–3 sn","Ekran kaydı: çekiliş uygulamasında sonuç çıkıyor (isim kısmen gizli)."],["3–6 sn","Yazı: Kazanan belli oldu!"],["6–12 sn","Kazanan şubede, ilk öğle yemeği masaya geliyor, ekip alkışlıyor."],["12–15 sn","Kazananla birlikte kameraya el sallanır. Kapanış kartı."]],
+ voice:"Kazanan kendi cümleleriyle: \"İnanamadım, bir ay buradayım!\"",
+ caption:"Tebrikler @[KAZANAN] 🎉 1 ay boyunca öğle yemeğin bizden!\nKatılan herkese teşekkürler, yeni çekilişler yolda 👀",
+ tip:"Kazanan çekilmek istemezse sadece ekran kaydı ve tabak görüntüsüyle yap."},
+
+{p:4,t:"Kör tadım: Atatürk Mah. (2)",hook:"Atatürk Mahallesi'ne köftemizi tattırdık.",len:"20–25 sn",time:"11:30",tags:[],
+ goal:"Kör tadım serisinin finali. Puan tablosu tamamlanır, kazanan mahalle ilan edilir. Serinin sonu olduğu için en çok paylaşılan bölüm olur.",
+ scenes:[["0–2 sn","Atatürk Mahallesi'nden tanınan bir nokta. Yazı: Final: Atatürk Mahallesi."],["2–16 sn","Tadım, tepkiler, puanlar."],["16–20 sn","Marka açıklanır."],["20–25 sn","Final puan tablosu animasyonla: 5 mahalle sıralanır, birinci mahalle parlar."]],
+ voice:"Önceki tadımlarla aynı sorular.",
+ caption:"Kör tadım serisi bitti! 🏆 Birinci: [MAHALLE]\n[MAHALLE]'den gelenlere bu hafta [İKRAM] bizden 🎁\nSeriyi beğendiyseniz yeni mahallelerle devam edelim mi?",
+ tip:"Kazanan mahalle ikramı merkezin onayına tabidir. Seri tuttuysa sonraki ay Beyazevler, Dokuz Eylül, Menderes gibi mahallelerle devam et."},
+
+{p:4,t:"Skeç 2. bölüm (3)",hook:"Geçen hafta itiraz eden arkadaş geri döndü.",len:"25–30 sn",time:"20:30",tags:[],
+ goal:"İlk skeç tuttuysa devamı daha çok izlenir. Bu sefer itiraz eden arkadaş herkesi kendisi getirir: alışkanlığın kırılıp yeni alışkanlığın oluştuğunu mizahla anlatır.",
+ scenes:[["0–3 sn","Aynı arkadaş grubu sokakta. Bu sefer başka biri: \"Bugün bizim yere gidelim mi?\""],["3–8 sn","Eskiden itiraz eden arkadaş: \"Olmaaaz! Biz artık hep Köfteci Dayı'ya gidiyoruz!\""],["8–15 sn","Bu sefer o, herkesi kolundan çekerek götürür."],["15–24 sn","Masada garsonu ismiyle çağırır: \"[İSİM], her zamankinden!\""],["24–30 sn","Diğerleri birbirine bakar. Yazı: Alışkanlık değişti 😄 + kapanış kartı."]],
+ voice:"\"Olmaz, biz artık hep buraya geliyoruz!\" · \"[Garson ismi], her zamankinden!\"",
+ caption:"O arkadaş geri döndü 😅 Bu sefer herkesi o getiriyor.\nSenin grubunda kim böyle? Etiketle 👇",
+ tip:"İlk skeçle aynı oyuncuları ve aynı kıyafetleri kullan, devamlılık hissi versin."},
+
+{p:4,t:"1 ayın teşekkür videosu",hook:"Bu ay kaç Gaziemirli ilk kez geldi?",len:"20–25 sn",time:"20:30",tags:["collab"],
+ goal:"Ayı kapatır ve sonraki aya köprü kurar. Gerçek bir sayı (ilk kez gelen müşteri) göstermek, \"herkes gidiyor\" algısını güçlendirir. Merkez hesabıyla paylaşılırsa diğer şubelere de başarı hikâyesi olur.",
+ scenes:[["0–3 sn","Yazı: Gaziemir'deki ilk ayımız."],["3–8 sn","Sayaç animasyonu: Bu ay [SAYI] Gaziemirli bizi ilk kez denedi."],["8–18 sn","Ayın en güzel anlarından hızlı kurgu: kör tadımlar, skeç, müşteri gülüşleri, çekiliş kazananı."],["18–22 sn","Tüm ekip kapının önünde, birlikte: \"Teşekkürler Gaziemir!\""],["22–25 sn","Yazı: Gelecek ay yeni sürprizler 👀 + kapanış kartı."]],
+ voice:"Ekip hep birlikte: \"Teşekkürler Gaziemir!\" · Sahip: \"Bir ay önce yabancıydık, bugün komşuyuz.\"",
+ caption:"Bir ay önce yabancıydık, bugün komşuyuz 🤝\nBu ay [SAYI] Gaziemirli bizi ilk kez denedi. Hepinize teşekkürler!\nGelecek ay neler görmek istersiniz? Yorumlara yazın 👇",
+ tip:"Sayıyı kasadaki \"Bizi nereden duydunuz / ilk kez mi?\" çetelesinden al. Gerçek sayıyı yaz, küçük de olsa samimiyet kazandırır."}
 ];
 const CHIP={ad:["ad","Reklam ver"],camp:["camp","Kampanya"],collab:["","Collab"]};
 const WD=["Pazar","Pazartesi","Salı","Çarşamba","Perşembe","Cuma","Cumartesi"];
@@ -157,7 +352,7 @@ const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},se
 let done={};try{done=JSON.parse(store.get("kd-done")||"{}")}catch(e){done={}}
 const startEl=document.getElementById("start");
 startEl.value=store.get("kd-start")||"";
-function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
 function render(){
   const start=startEl.value?new Date(startEl.value+"T12:00:00"):null;
   const box=document.getElementById("phases");box.innerHTML="";
@@ -165,15 +360,25 @@ function render(){
     const sec=document.createElement("section");sec.className="phase";
     sec.innerHTML=`<div class="phase-head"><h2>${p.name}</h2><p>${p.note}</p></div>`;
     DAYS.forEach((d,i)=>{
-      if(d[0]!==pi+1)return;
-      const n=i+1;let dateTxt="";
+      if(d.p!==pi+1)return;
+      const n=i+1;let dateTxt="Gün "+n;
       if(start){const dt=new Date(start);dt.setDate(dt.getDate()+i);dateTxt=`${dt.getDate()} ${MO[dt.getMonth()]}<br>${WD[dt.getDay()]}`}
-      const chips=d[5].map(c=>`<span class="chip ${CHIP[c][0]}">${CHIP[c][1]}</span>`).join("");
+      const chips=d.tags.map(c=>`<span class="chip ${CHIP[c][0]}">${CHIP[c][1]}</span>`).join("");
+      const scenes=d.scenes.map(s=>`<li><span class="sn">${esc(s[0])}</span><span>${esc(s[1])}</span></li>`).join("");
       const el=document.createElement("article");el.className="day"+(done[n]?" done":"");
-      el.innerHTML=`<div><div class="num">${n}</div><div class="date">${dateTxt||"Gün "+n}</div></div>
-        <div class="main"><p class="title">${esc(d[1])}</p><p class="hook">${esc(d[2])}</p><p class="shoot">${esc(d[3])}</p></div>
-        <div class="side"><span class="time">${esc(d[4])}</span><div class="chips">${chips}</div>
-        <label class="check"><input type="checkbox" id="done-${n}" ${done[n]?"checked":""}> Paylaşıldı</label></div>`;
+      el.innerHTML=`<div class="top">
+          <div><div class="num">${n}</div><div class="date">${dateTxt}</div></div>
+          <div class="head"><p class="title">${esc(d.t)}</p><p class="hook"><small>Ekran yazısı</small>${esc(d.hook)}</p></div>
+          <div class="side"><span class="time">${esc(d.time)}</span><span class="len">${esc(d.len)}</span><div class="chips">${chips}</div>
+          <label class="check"><input type="checkbox" id="done-${n}" ${done[n]?"checked":""}> Paylaşıldı</label></div>
+        </div>
+        <div class="body">
+          <div><p class="lbl">Neden bu video?</p><p class="goal">${esc(d.goal)}</p></div>
+          <div><p class="lbl">Sahne sahne çekim</p><ol class="scenes">${scenes}</ol></div>
+          <div><p class="lbl">Konuşma / seslendirme</p><p class="voice">${esc(d.voice).replace(/\n/g,"<br>")}</p></div>
+          <div><p class="lbl">Video altı açıklama</p><p class="caption">${esc(d.caption)}</p></div>
+          ${d.tip?`<p class="tip"><b>Dikkat:</b> ${esc(d.tip)}</p>`:""}
+        </div>`;
       el.querySelector("input").addEventListener("change",e=>{done[n]=e.target.checked;store.set("kd-done",JSON.stringify(done));el.classList.toggle("done",e.target.checked);count()});
       sec.appendChild(el);
     });
